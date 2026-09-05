@@ -1,23 +1,22 @@
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
-import sinon from 'sinon';
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import sinon from 'sinon'
 
-import setup from './test-setup.js';
+import setup from './test-setup.js'
 
-test('Ensure all imports used by index.js are correct', async t => {
+test('Ensure all imports used by index.js are correct', async () => {
   try {
     await import('./lib/github.js')
     await import('./lib/auth.js')
     await import('./lib/routes.js')
-    
+
     assert.ok(true, 'all imports used by index.js import correctly')
-    
   } catch (err) {
-    assert.fail(`Failed to import files used by index.js: ${err.message}`, )
+    assert.fail(`Failed to import files used by index.js: ${err.message}`)
   }
 })
 
-test('create pr', async t => {
+test('create pr', async () => {
   const mockedRepo = { repo: 'smn-repo', owner: 'salmanm' }
 
   const getRepoDetailsStub = sinon.stub().resolves(mockedRepo)
@@ -64,14 +63,14 @@ test('create pr', async t => {
         owner: 'salmanm',
         repo: 'smn-repo',
       },
-      'some-token'
-    )
+      'some-token',
+    ),
   )
 
   assert.equal(response.statusCode, 200)
 })
 
-test('create release with target specified', async t => {
+test('create release with target specified', async () => {
   const mockedRepo = { repo: 'smn-repo', owner: 'salmanm' }
 
   const getAccessTokenStub = sinon.stub().resolves('some-token')
@@ -113,14 +112,14 @@ test('create release with target specified', async t => {
         owner: 'salmanm',
         repo: 'smn-repo',
       },
-      'some-token'
-    )
+      'some-token',
+    ),
   )
 
   assert.equal(response.statusCode, 200)
 })
 
-test('create release with no target specified', async t => {
+test('create release with no target specified', async () => {
   const mockedRepo = { repo: 'smn-repo', owner: 'salmanm' }
 
   const getAccessTokenStub = sinon.stub().resolves('some-token')
@@ -160,14 +159,14 @@ test('create release with no target specified', async t => {
         owner: 'salmanm',
         repo: 'smn-repo',
       },
-      'some-token'
-    )
+      'some-token',
+    ),
   )
 
   assert.equal(response.statusCode, 200)
 })
 
-test('create release with releaseNotes specified', async t => {
+test('create release with releaseNotes specified', async () => {
   const mockedRepo = { repo: 'smn-repo', owner: 'salmanm' }
 
   const getAccessTokenStub = sinon.stub().resolves('some-token')
@@ -210,14 +209,14 @@ test('create release with releaseNotes specified', async t => {
         owner: 'salmanm',
         repo: 'smn-repo',
       },
-      'some-token'
-    )
+      'some-token',
+    ),
   )
 
   assert.equal(response.statusCode, 200)
 })
 
-test('it publishes a prerelease successfully', async t => {
+test('it publishes a prerelease successfully', async () => {
   const mockedRepo = { repo: 'smn-repo', owner: 'salmanm' }
 
   const getAccessTokenStub = sinon.stub().resolves('some-token')
@@ -260,8 +259,8 @@ test('it publishes a prerelease successfully', async t => {
         owner: 'salmanm',
         repo: 'smn-repo',
       },
-      'some-token'
-    )
+      'some-token',
+    ),
   )
 
   assert.equal(response.statusCode, 200)

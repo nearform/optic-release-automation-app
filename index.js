@@ -1,4 +1,4 @@
-import Fastify from 'fastify';
+import Fastify from 'fastify'
 
 import githubRoutes from './lib/github.js'
 import authRoutes from './lib/auth.js'
@@ -9,7 +9,6 @@ import config from './lib/config.js'
 const fastify = Fastify({
   logger: true,
 })
-
 
 fastify
   .register(githubRoutes, config)

@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import routes from './lib/routes.js';
+import routes from './lib/routes.js'
 
 const config = {
   PRIVATE_KEY: 'pk-pk',
